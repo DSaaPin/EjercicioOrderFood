@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Food = ({icon, name}) => {
+const Food = ({id, name, price, quantity}) => {
 
 return (
     <button>
-        {icon}  {name}
+       {name}
     </button>
 );
 };
