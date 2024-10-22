@@ -1,31 +1,37 @@
 import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
-import './App.css'
-import './components/Food';
-import Food from './components/Food';
+import styles from './App.module.css'
+import OrderList from "./components/OrderList/OrderList";
+import Product from "./components/Product/Product";
 
 function App() {
-  //const [count, setCount] = useState(0)
 
-  const Foods = [
-    { id: 0, name: '🍔', price: 300, quantity: 0 },
-    { id: 1, name: '🍟', price: 100, quantity: 0 },
-    { id: 2, name: '🍦', price: 80, quantity: 0 },
-    { id: 3, name: '🥤', price: 110, quantity: 0 },
-    { id: 4, name: '🥗', price: 150, quantity: 0 },
-    { id: 5, name: '🍜', price: 200, quantity: 0 }
+  const PRODUCT_LIST = [
+    { id: 0, name: '🍔', price: 300, quantity: 1 },
+    { id: 1, name: '🍟', price: 100, quantity: 2 },
+    { id: 2, name: '🍦', price: 80, quantity: 3 },
+    { id: 3, name: '🥤', price: 110, quantity: 2 },
+    { id: 4, name: '🥗', price: 150, quantity: 2 },
+    { id: 5, name: '🍜', price: 200, quantity: 1 }
   ];
 
+  const [orderList, setOrderList] = useState([]);
+
+  const handleClickOnProduct = (product) => {
+    setOrderList([product, ...orderList]);
+  }
+
   return (
-    <>
-      <div>
-        {Foods.map((food) => (
-          <Food key={food.id} name={food.name} />
+      <div className={styles.container}>
+      <div className={styles.productContainer}>
+        <h1>Add to your order:</h1>
+
+        {PRODUCT_LIST.map((product) => (
+          <Product key={product.id} product={product} onClick={(product) => handleClickOnProduct(product)} />
         ))}
       </div>
-    </>
+      <OrderList orderList={orderList} />
+    </div>
   )
 }
 
-export default App
+export default App;
