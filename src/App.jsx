@@ -11,7 +11,7 @@ function App() {
     { id: 2, name: '🍦', price: 80, quantity: 3 },
     { id: 3, name: '🥤', price: 110, quantity: 2 },
     { id: 4, name: '🥗', price: 150, quantity: 2 },
-    { id: 5, name: '🍜', price: 200, quantity: 1 }
+    { id: 5, name: '🍜', price: 200, quantity: 1 },
   ];
 
   const [orderList, setOrderList] = useState([]);

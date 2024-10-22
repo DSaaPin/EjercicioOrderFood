@@ -1,12 +1,12 @@
-import styles from "./Product.module.css"
+import styles from "./Product.module.css";
 
-function Product({ product, onClick }){
-        
+const Product = ({ product, onClick }) => {
+
     return (
-        <div className={styles.wrapperProduct} onClick={() => onClick(product)}>
-            {product.name}
-        </div>
+      <div className={styles.wrapperProduct} onClick={() => onClick(product)}>
+        {product.name}
+      </div>
     );
-};
+  };
 
-export default Product
+export default Product;
