@@ -5,29 +5,31 @@ import Total from "../Total/Total";
 
 const OrderList = (props) => {
 
-    const { orderList } = props;
+    const { orderList, setOrderList , clearOrderItem} = props;
     console.log(orderList);
 
     return(
         <div className={styles.orderBox}>
         <div className={styles.titleList}>
           <h2>Order List</h2>
-          <span>🗑</span>
+          <span onClick={ () => setOrderList([])}>🗑</span>
         </div>
         <div className={styles.spaceItemsPrice}>
           <div className={styles.items}>
-            {orderList.map((item) => (
-              <ListItem
+            {orderList.map((item) => (              
+              <>
+          {item.quantity>0 && <ListItem
                 key={item.id}
-                product={item.name}
-                amount={item.quantity}
-                price={item.price}
-              />
+                product={item}
+                clearOrderItem={clearOrderItem}
+              />}
+          </>
+              
             ))}
           </div>
           <div>
             <hr />
-            <Total />
+            <Total orderList={orderList}/>
           </div>
         </div>
       </div>
